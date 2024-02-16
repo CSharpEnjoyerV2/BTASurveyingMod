@@ -1,13 +1,22 @@
 package kiryuenjoyer.btasurveyingmod;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.sound.block.BlockSound;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.material.Material;
+import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemPlaceable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.helper.ItemHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
+import useless.dragonfly.debug.block.BlockModel;
+import useless.dragonfly.helper.ModelHelper;
+import useless.dragonfly.model.block.BlockModelDragonFly;
 
 import java.util.Properties;
 
@@ -23,10 +32,14 @@ public class BTASurveyingMod implements ModInitializer, GameStartEntrypoint, Rec
 		config = new ConfigHandler(MOD_ID, properties);
 		itemID = config.getInt("itemID");
 	}
+	//Blocks
+	public static final Block blockTheodolite = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelDragonFly(ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockTheodolite.json")))
+		.build(new BlockModel("blockTheodolite", 1000, Material.metal, ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockTheodolite.json")));
 
 	//Items
 	public static Item ItemTheodolite = ItemHelper.createItem(BTASurveyingMod.MOD_ID,
-		new Item("theodolite", itemID++), "btasurveyingmodtheodolite.png");
+		new ItemPlaceable("theodolite", itemID++, blockTheodolite), "btasurveyingmodtheodolite.png");
 	@Override
     public void onInitialize() {
         LOGGER.info("btasurveyingmod initialized.");
