@@ -1,7 +1,9 @@
 package kiryuenjoyer.btasurveyingmod;
 
+import kiryuenjoyer.btasurveyingmod.block.blockMarker;
 import kiryuenjoyer.btasurveyingmod.block.blockTheodolite;
 import kiryuenjoyer.btasurveyingmod.item.ItemTheodolite;
+import kiryuenjoyer.btasurveyingmod.item.ItemMarker;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.client.sound.block.BlockSounds;
@@ -30,25 +32,35 @@ public class BTASurveyingMod implements ModInitializer, GameStartEntrypoint, Rec
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static ConfigHandler config;
 	private static int itemID;
+	private static int blockID;
 	static {
 		Properties properties = new Properties();
-		properties.put("itemID", "18000");
+		properties.put("blockID", "1000");
+		properties.put("itemID", "17000");
 		config = new ConfigHandler(MOD_ID, properties);
 		itemID = config.getInt("itemID");
+		blockID = config.getInt("blockID");
 	}
 
 	//Blocks
 	public static final Block blockTheodolite = new BlockBuilder(MOD_ID)
 		.setBlockModel(new BlockModelDragonFly(ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockTheodolite.json")))
-		.setHardness(2.0F)
+		.setHardness(1.0F)
 		.setBlockSound(BlockSounds.STONE)
 		.setTags(BlockTags.MINEABLE_BY_PICKAXE)
-		.build(new blockTheodolite("blockTheodolite", 1000, Material.metal, ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockTheodolite.json")));
+		.build(new blockTheodolite("blockTheodolite", blockID++, Material.metal, ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockTheodolite.json")));
+	public static final Block blockMarker = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelDragonFly(ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockMarker.json")))
+		.setHardness(0.5F)
+		.setBlockSound(BlockSounds.WOOD)
+		.setTags(BlockTags.MINEABLE_BY_AXE)
+		.build(new blockMarker("blockMarker", blockID++, Material.metal, ModelHelper.getOrCreateBlockModel(MOD_ID, "block/blockMarker.json")));
 
 	//Items
 	public static Item itemTheodolite = ItemHelper.createItem(BTASurveyingMod.MOD_ID,
-		new ItemPlaceable("theodolite", itemID++, blockTheodolite), "btasurveyingmodtheodolite.png");
-
+		new ItemPlaceable("itemTheodolite", itemID++, blockTheodolite), "btasurveyingmodtheodolite.png");
+	public static Item itemMarker = ItemHelper.createItem(BTASurveyingMod.MOD_ID,
+		new ItemPlaceable("itemMarker", itemID++, blockMarker), "itemMarker.png");
 
 	@Override
     public void onInitialize() {
