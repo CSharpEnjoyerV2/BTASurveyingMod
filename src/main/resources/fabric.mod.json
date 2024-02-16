@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "btasurveyingmod",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "BTA Surveying Mod",
   "description": "This mod aims to help new BTA modders.",
   "authors": [
-    "Turnip Labs"
+    "KiryuEnjoyer"
   ],
   "contact": {
     "homepage": "",
@@ -19,20 +19,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+			"kiryuenjoyer.btasurveyingmod.BTASurveyingMod"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"kiryuenjoyer.btasurveyingmod.BTASurveyingMod"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"kiryuenjoyer.btasurveyingmod.BTASurveyingMod"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"kiryuenjoyer.btasurveyingmod.BTASurveyingMod"
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+      "btasurveyingmod.mixins.json"
   ],
 
   "depends": {
