@@ -1,11 +1,13 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "kiryuenjoyer.btasurveyingmod.mixin",
+    "package": "kiryuenjoyer.btasurveyingmod.mixin.mixins",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
+      "GameSettingsMixin"
     ],
     "client": [
+      "GameSettingsMixin"
     ],
     "injectors": {
         "defaultRequire": 1

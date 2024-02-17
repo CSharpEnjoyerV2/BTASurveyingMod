@@ -1,2 +1,5 @@
 item.btasurveyingmod.itemTheodolite.name = Theodolite
 item.btasurveyingmod.itemMarker.name = Marker
+surveying.options.title = BTASurveying
+surveying.options.category.keybinds.explicit = Better Than Cartography
+surveying.key.openMap = Open Map

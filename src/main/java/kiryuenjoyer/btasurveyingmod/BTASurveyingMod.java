@@ -23,6 +23,7 @@ import turniplabs.halplibe.util.RecipeEntrypoint;
 import useless.dragonfly.debug.block.BlockModel;
 import useless.dragonfly.helper.ModelHelper;
 import useless.dragonfly.model.block.BlockModelDragonFly;
+import net.minecraft.core.Global;
 
 import java.util.Properties;
 
@@ -74,7 +75,9 @@ public class BTASurveyingMod implements ModInitializer, GameStartEntrypoint, Rec
 
 	@Override
 	public void afterGameStart() {
-
+		if (!Global.isServer){
+			BTASurveyingModClient.onLoad();
+		}
 	}
 
 	@Override
