@@ -4,7 +4,10 @@ import kiryuenjoyer.btasurveyingmod.block.blockMarker;
 import kiryuenjoyer.btasurveyingmod.block.blockTheodolite;
 import kiryuenjoyer.btasurveyingmod.item.ItemTheodolite;
 import kiryuenjoyer.btasurveyingmod.item.ItemMarker;
+import kiryuenjoyer.btasurveyingmod.mixin.interfaces.IOptions;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.client.sound.block.BlockSounds;
 import net.minecraft.core.block.Block;
@@ -24,11 +27,13 @@ import useless.dragonfly.debug.block.BlockModel;
 import useless.dragonfly.helper.ModelHelper;
 import useless.dragonfly.model.block.BlockModelDragonFly;
 import net.minecraft.core.Global;
+import kiryuenjoyer.btasurveyingmod.mixin.mixins.GameSettingsMixin;
+import kiryuenjoyer.btasurveyingmod.BTASurveyingModClient;
 
 import java.util.Properties;
 
-
 public class BTASurveyingMod implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
+	public Minecraft mc;
 	public static final String MOD_ID = "btasurveyingmod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static ConfigHandler config;
@@ -72,7 +77,6 @@ public class BTASurveyingMod implements ModInitializer, GameStartEntrypoint, Rec
 	public void beforeGameStart() {
 
 	}
-
 	@Override
 	public void afterGameStart() {
 		if (!Global.isServer){

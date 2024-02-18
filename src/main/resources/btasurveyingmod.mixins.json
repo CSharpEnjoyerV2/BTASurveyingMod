@@ -4,10 +4,10 @@
     "package": "kiryuenjoyer.btasurveyingmod.mixin.mixins",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-      "GameSettingsMixin"
+      "GameSettingsMixin", "GuiIngameMixin"
     ],
     "client": [
-      "GameSettingsMixin"
+      "GameSettingsMixin", "GuiIngameMixin"
     ],
     "injectors": {
         "defaultRequire": 1
